@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="RajKamal Jewellers Jalna - crafting moments since 1978 with hallmarked quality jewellery and exquisite Indian designs.">
+    <title>{% block title %}RajKamal Jewellers{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rajGold: "#D4AF37",
+                        rajMaroon: "#5A0F18",
+                        rajCream: "#FFF8EA",
+                        rajInk: "#1E1715"
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "Georgia", "serif"],
+                        body: ["Inter", "ui-sans-serif", "system-ui"]
+                    },
+                    boxShadow: {
+                        luxury: "0 24px 70px rgba(90,15,24,.18)"
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-rajCream text-rajInk font-body antialiased">
+    {% include "components/navbar.html" %}
+    <main>{% block content %}{% endblock %}</main>
+    {% include "components/footer.html" %}
+    {% include "components/toasts.html" %}
+    <a href="https://wa.me/918956715719?text=Namaste%20RajKamal%20Jewellers%2C%20I%20would%20like%20to%20enquire%20about%20jewellery." class="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-green-500 text-white shadow-luxury transition hover:scale-105" aria-label="Chat on WhatsApp">
+        <span class="text-2xl">☎</span>
+    </a>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

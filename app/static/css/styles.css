@@ -1,0 +1,194 @@
+:root {
+    color-scheme: light;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 12% 8%, rgba(212, 175, 55, .14), transparent 28rem),
+        linear-gradient(180deg, #fff8ea 0%, #fff3dc 46%, #fff8ea 100%);
+}
+
+.rj-mark {
+    align-items: center;
+    aspect-ratio: 1;
+    background:
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .28), transparent 22%),
+        linear-gradient(135deg, #D4AF37 0%, #fff0a8 38%, #9f7414 100%);
+    border: 1px solid rgba(255, 244, 185, .75);
+    border-radius: 999px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, .28), inset 0 0 0 3px rgba(90, 15, 24, .92);
+    color: #5A0F18;
+    display: inline-flex;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1rem;
+    font-weight: 900;
+    justify-content: center;
+    letter-spacing: .03em;
+    min-width: 3rem;
+}
+
+.nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, .86);
+    transition: color .2s ease;
+}
+
+.nav-link:hover {
+    color: #D4AF37;
+}
+
+.nav-link::after {
+    background: #D4AF37;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    width: 100%;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+.section-kicker {
+    color: #D4AF37;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+}
+
+.section-title {
+    color: #5A0F18;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-top: .35rem;
+}
+
+.category-tile {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(255, 247, 224, .9)),
+        radial-gradient(circle at top right, rgba(212, 175, 55, .28), transparent 35%);
+    border: 1px solid rgba(212, 175, 55, .28);
+    border-radius: .65rem;
+    box-shadow: 0 18px 42px rgba(90, 15, 24, .08);
+    display: block;
+    min-height: 17rem;
+    overflow: hidden;
+    padding: 1.65rem;
+    position: relative;
+    transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.category-tile::after {
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, .7), transparent);
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 1.5rem;
+    position: absolute;
+    right: 1.5rem;
+}
+
+.category-tile:hover {
+    border-color: rgba(212, 175, 55, .58);
+    box-shadow: 0 28px 70px rgba(90, 15, 24, .16);
+    transform: translateY(-6px);
+}
+
+.category-icon {
+    align-items: center;
+    background: #5A0F18;
+    border: 1px solid rgba(212, 175, 55, .5);
+    border-radius: 999px;
+    color: #D4AF37;
+    display: inline-flex;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    height: 3.25rem;
+    justify-content: center;
+    width: 3.25rem;
+}
+
+.carousel-slide.is-active {
+    opacity: 1 !important;
+}
+
+.spec-row {
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, .18);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .85rem 0;
+}
+
+.spec-row:last-child {
+    border-bottom: 0;
+}
+
+.form-input {
+    border: 1px solid rgba(212, 175, 55, .35);
+    border-radius: 999px;
+    outline: none;
+    padding: .8rem 1.1rem;
+    width: 100%;
+}
+
+.form-input:focus {
+    border-color: #D4AF37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, .12);
+}
+
+.admin-link {
+    border-radius: .5rem;
+    color: rgba(255, 255, 255, .78);
+    padding: .75rem 1rem;
+    transition: background .2s ease, color .2s ease;
+}
+
+.admin-link:hover {
+    background: rgba(255, 255, 255, .1);
+    color: #D4AF37;
+}
+
+.toast {
+    animation: toast-in .25s ease both;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-card {
+    animation: rise .7s ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

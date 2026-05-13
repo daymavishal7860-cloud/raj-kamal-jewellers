@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+{% block title %}Products | RajKamal Admin{% endblock %}
+{% block content %}
+<div class="flex flex-wrap items-center justify-between gap-4">
+    <div>
+        <p class="section-kicker">Inventory</p>
+        <h1 class="section-title">Products</h1>
+    </div>
+    <a href="{{ url_for('admin.product_new') }}" class="rounded-full bg-rajMaroon px-5 py-3 text-sm font-semibold text-white">Add Product</a>
+</div>
+<form method="post" action="{{ url_for('admin.category_new') }}" class="mt-6 flex gap-3 rounded-lg bg-white p-4 shadow-sm">
+    <input name="name" required placeholder="Add category" class="form-input">
+    <button class="rounded-full bg-rajGold px-5 py-3 font-semibold text-rajMaroon">Save</button>
+</form>
+<div class="mt-8 overflow-x-auto rounded-lg border border-rajGold/20 bg-white shadow-sm">
+    <table class="w-full min-w-[900px] text-left text-sm">
+        <thead class="bg-rajCream text-black/55"><tr><th class="p-4">Product</th><th>Category</th><th>Price</th><th>Purity</th><th>Stock</th><th>Actions</th></tr></thead>
+        <tbody>
+        {% for product in products %}
+            <tr class="border-t">
+                <td class="p-4 font-semibold">{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price|money }}</td>
+                <td>{{ product.purity }}</td>
+                <td>{{ product.stock }}</td>
+                <td class="flex gap-2 py-3">
+                    <a class="rounded-full border border-rajGold px-4 py-2" href="{{ url_for('admin.product_edit', product_id=product._id) }}">Edit</a>
+                    <form method="post" action="{{ url_for('admin.product_delete', product_id=product._id) }}" onsubmit="return confirm('Delete this product?')">
+                        <button class="rounded-full border border-red-300 px-4 py-2 text-red-700">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td class="p-6 text-black/50" colspan="6">No products yet. Seed sample data or add your first product.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

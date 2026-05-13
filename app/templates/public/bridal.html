@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Bridal Collection | RajKamal Jewellers{% endblock %}
+{% block content %}
+<section class="relative min-h-[82vh] overflow-hidden bg-rajMaroon pt-24 text-white">
+    <video class="absolute inset-0 h-full w-full object-cover opacity-35" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1800&q=80"></video>
+    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1800&q=80" alt="Bridal jewellery" class="absolute inset-0 h-full w-full object-cover opacity-45">
+    <div class="absolute inset-0 bg-gradient-to-t from-rajMaroon via-rajMaroon/40 to-transparent"></div>
+    <div class="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl items-end px-4 pb-16 lg:px-8">
+        <div class="max-w-3xl">
+            <p class="section-kicker text-rajGold">Bridal Collections</p>
+            <h1 class="font-display text-5xl font-bold md:text-7xl">Made for the aisle, remembered for generations.</h1>
+            <p class="mt-5 max-w-2xl text-white/75">Explore statement harams, chokers, bangles, maang tikka sets, and custom bridal styling.</p>
+        </div>
+    </div>
+</section>
+<section class="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+    <div class="flex gap-5 overflow-x-auto pb-4">
+        {% for product in products %}
+            <div class="min-w-[290px] max-w-[290px]">
+                {% include "components/product_card.html" %}
+            </div>
+        {% endfor %}
+    </div>
+    <form method="post" action="{{ url_for('public.book_appointment') }}" class="mt-12 grid gap-4 rounded-lg border border-rajGold/20 bg-white p-6 shadow-luxury md:grid-cols-4">
+        <input name="name" required placeholder="Name" class="form-input">
+        <input name="phone" required placeholder="Phone" class="form-input">
+        <input name="date" type="date" required class="form-input">
+        <button class="rounded-full bg-rajMaroon px-6 py-3 font-semibold text-white">Book Bridal Visit</button>
+    </form>
+</section>
+{% endblock %}

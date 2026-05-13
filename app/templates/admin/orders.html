@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+{% block title %}Orders & Enquiries | RajKamal Admin{% endblock %}
+{% block content %}
+<p class="section-kicker">Customers</p>
+<h1 class="section-title">Orders & Enquiries</h1>
+<section class="mt-8 rounded-lg border border-rajGold/20 bg-white p-6 shadow-sm">
+    <h2 class="font-display text-2xl font-bold text-rajMaroon">Appointments / Orders</h2>
+    <div class="mt-4 overflow-x-auto">
+        <table class="w-full min-w-[760px] text-left text-sm">
+            <thead class="text-black/50"><tr><th class="py-3">Name</th><th>Phone</th><th>Service</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody>
+            {% for order in orders %}
+                <tr class="border-t"><td class="py-3">{{ order.name }}</td><td>{{ order.phone }}</td><td>{{ order.service }}</td><td>{{ order.date }}</td><td>{{ order.status }}</td></tr>
+            {% else %}
+                <tr><td colspan="5" class="py-6 text-black/50">No orders yet.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+<section class="mt-8 rounded-lg border border-rajGold/20 bg-white p-6 shadow-sm">
+    <h2 class="font-display text-2xl font-bold text-rajMaroon">Enquiries</h2>
+    <div class="mt-4 overflow-x-auto">
+        <table class="w-full min-w-[760px] text-left text-sm">
+            <thead class="text-black/50"><tr><th class="py-3">Name</th><th>Phone</th><th>Email</th><th>Message</th><th>Status</th></tr></thead>
+            <tbody>
+            {% for enquiry in enquiries %}
+                <tr class="border-t"><td class="py-3">{{ enquiry.name }}</td><td>{{ enquiry.phone }}</td><td>{{ enquiry.email }}</td><td>{{ enquiry.message }}</td><td>{{ enquiry.status }}</td></tr>
+            {% else %}
+                <tr><td colspan="5" class="py-6 text-black/50">No enquiries yet.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

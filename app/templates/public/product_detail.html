@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} | RajKamal Jewellers{% endblock %}
+{% block content %}
+<section class="pt-28">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 lg:px-8">
+        <div class="grid gap-4">
+            {% for image in product.images %}
+                <div class="zoom-frame overflow-hidden rounded-lg bg-white shadow-luxury">
+                    <img loading="lazy" src="{{ image if image.startswith('http') else url_for('static', filename=image) }}" alt="{{ product.name }}" class="h-[34rem] w-full object-cover transition duration-700 hover:scale-110">
+                </div>
+            {% endfor %}
+        </div>
+        <div class="lg:sticky lg:top-28 lg:self-start">
+            <p class="section-kicker">{{ product.category }}</p>
+            <h1 class="font-display text-4xl font-bold text-rajMaroon md:text-5xl">{{ product.name }}</h1>
+            <p class="mt-4 text-3xl font-bold">{{ product.price|money }}</p>
+            <p class="mt-5 leading-8 text-rajInk/70">{{ product.description }}</p>
+            <div class="mt-8 grid gap-3 rounded-lg border border-rajGold/20 bg-white p-6 shadow-sm">
+                <div class="spec-row"><span>Gold purity</span><strong>{{ product.purity }}</strong></div>
+                <div class="spec-row"><span>Weight</span><strong>{{ product.weight }}</strong></div>
+                <div class="spec-row"><span>Stones</span><strong>{{ product.stones }}</strong></div>
+                <div class="spec-row"><span>Making charges</span><strong>{{ product.making_charges }}</strong></div>
+                <div class="spec-row"><span>Stock</span><strong>{{ product.stock }}</strong></div>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <form method="post" action="{{ url_for('public.toggle_wishlist', slug=product.slug) }}">
+                    <button class="rounded-full bg-rajMaroon px-7 py-3 font-semibold text-white transition hover:bg-rajGold hover:text-rajMaroon">Like product</button>
+                </form>
+                <a class="rounded-full border border-green-500 px-7 py-3 font-semibold text-green-700" href="https://wa.me/918956715719?text=I%20am%20interested%20in%20{{ product.name|urlencode }}">WhatsApp enquiry</a>
+            </div>
+            <form method="post" action="{{ url_for('public.product_enquiry', slug=product.slug) }}" class="mt-8 grid gap-4 rounded-lg border border-rajGold/20 bg-white p-6 shadow-luxury">
+                <div>
+                    <p class="section-kicker">Product Enquiry</p>
+                    <h2 class="font-display text-2xl font-bold text-rajMaroon">Ask about this design</h2>
+                </div>
+                <input name="name" required placeholder="Full name" class="form-input">
+                <input name="phone" required placeholder="Phone number" class="form-input">
+                <input name="email" type="email" placeholder="Email optional" class="form-input">
+                <textarea name="message" rows="4" required placeholder="Tell us your size, occasion, budget, or visit preference" class="form-input rounded-2xl">I am interested in {{ product.name }}.</textarea>
+                <button class="rounded-full bg-rajGold px-7 py-3 font-semibold text-rajMaroon transition hover:bg-rajMaroon hover:text-white">Send enquiry</button>
+            </form>
+        </div>
+    </div>
+    <div class="mx-auto max-w-7xl px-4 pb-16 lg:px-8">
+        <h2 class="section-title">Related Products</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {% for product in related %}
+                {% include "components/product_card.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

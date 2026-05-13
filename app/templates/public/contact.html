@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Contact | RajKamal Jewellers{% endblock %}
+{% block content %}
+<section class="pt-28">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+        <div>
+            <p class="section-kicker">Contact</p>
+            <h1 class="font-display text-5xl font-bold text-rajMaroon">Plan your visit</h1>
+            <div class="mt-8 grid gap-4 text-rajInk/75">
+                <p><strong>Address:</strong> Pitty Complex, Nehru Road, Gawali Pura, Jalna, Maharashtra 431203</p>
+                <p><strong>Phone:</strong> +91 89567 15719</p>
+                <p><strong>Email:</strong> rajkamaljewellery@gmail.com</p>
+                <a class="inline-flex w-fit rounded-full bg-green-500 px-6 py-3 font-semibold text-white" href="https://wa.me/918956715719">WhatsApp Us</a>
+                <a class="inline-flex w-fit rounded-full border border-rajGold px-6 py-3 font-semibold text-rajMaroon" href="https://g.page/r/CYAxQEPLCI_FEBE/review">Google Review</a>
+            </div>
+        </div>
+        <form method="post" class="grid gap-4 rounded-lg border border-rajGold/20 bg-white p-6 shadow-luxury">
+            <input name="name" required placeholder="Full name" class="form-input">
+            <input name="email" type="email" placeholder="Email" class="form-input">
+            <input name="phone" required placeholder="Phone" class="form-input">
+            <textarea name="message" rows="5" required placeholder="Tell us what you are looking for" class="form-input rounded-2xl"></textarea>
+            <button class="rounded-full bg-rajMaroon px-7 py-3 font-semibold text-white">Send Enquiry</button>
+        </form>
+    </div>
+    <iframe title="RajKamal Jewellers map" class="h-96 w-full border-0" loading="lazy" src="https://www.google.com/maps?q=Pitty%20Complex%20Nehru%20Road%20Gawali%20Pura%20Jalna%20Maharashtra%20431203&output=embed"></iframe>
+</section>
+{% endblock %}

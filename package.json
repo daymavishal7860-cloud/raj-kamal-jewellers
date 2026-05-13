@@ -1,0 +1,12 @@
+{
+  "name": "rajkamal-jewellers",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "flask --app run.py --debug run",
+    "tailwind:build": "tailwindcss -i ./app/static/css/styles.css -o ./app/static/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

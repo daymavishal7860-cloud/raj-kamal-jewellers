@@ -1,0 +1,90 @@
+PLACEHOLDER_IMAGES = [
+    "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
+]
+
+CATEGORIES = [
+    {"name": "Gold Jewellery", "slug": "gold-jewellery"},
+    {"name": "Bridal Collections", "slug": "bridal-collections"},
+    {"name": "Temple Jewellery", "slug": "temple-jewellery"},
+    {"name": "Silver Jewellery", "slug": "silver-jewellery"},
+    {"name": "Wedding Collections", "slug": "wedding-collections"},
+]
+
+PRODUCTS = [
+    {
+        "name": "Maharani Bridal Necklace",
+        "slug": "maharani-bridal-necklace",
+        "price": 245000,
+        "category": "Bridal Collections",
+        "weight": "78.5g",
+        "making_charges": "14%",
+        "purity": "22K",
+        "stones": "Kundan, Polki accents",
+        "stock": 4,
+        "images": [PLACEHOLDER_IMAGES[0], PLACEHOLDER_IMAGES[1]],
+        "description": "A regal bridal necklace inspired by palace motifs and heirloom Indian craft.",
+        "trending": True,
+    },
+    {
+        "name": "Temple Lakshmi Haram",
+        "slug": "temple-lakshmi-haram",
+        "price": 188500,
+        "category": "Temple Jewellery",
+        "weight": "61.2g",
+        "making_charges": "12%",
+        "purity": "22K",
+        "stones": "Ruby toned stones",
+        "stock": 7,
+        "images": [PLACEHOLDER_IMAGES[1], PLACEHOLDER_IMAGES[2]],
+        "description": "Traditional temple craft with sculpted goddess motifs and antique finish.",
+        "trending": True,
+    },
+    {
+        "name": "Everyday Gold Bangles",
+        "slug": "everyday-gold-bangles",
+        "price": 96500,
+        "category": "Gold Jewellery",
+        "weight": "31.8g",
+        "making_charges": "10%",
+        "purity": "22K",
+        "stones": "None",
+        "stock": 12,
+        "images": [PLACEHOLDER_IMAGES[2], PLACEHOLDER_IMAGES[3]],
+        "description": "Minimal gold bangles made for daily elegance and festive layering.",
+        "trending": True,
+    },
+    {
+        "name": "Silver Statement Anklets",
+        "slug": "silver-statement-anklets",
+        "price": 8500,
+        "category": "Silver Jewellery",
+        "weight": "92g",
+        "making_charges": "Fixed",
+        "purity": "925 Silver",
+        "stones": "Oxidised detailing",
+        "stock": 18,
+        "images": [PLACEHOLDER_IMAGES[3], PLACEHOLDER_IMAGES[0]],
+        "description": "Heritage anklets with a refined oxidised silver finish.",
+        "trending": False,
+    },
+]
+
+BANNERS = [
+    {
+        "title": "Crafting Moments Since 1978",
+        "subtitle": "Quality, hallmarked, exquisite designs from RajKamal Jewellers, Jalna.",
+        "image": "uploads/hero-bridal-premium.jpg",
+        "order": 1,
+        "active": True,
+    },
+    {
+        "title": "A Family Craft & Enduring Legacy",
+        "subtitle": "By Late Shri Bhagwanji Dayma, serving families with trusted jewellery.",
+        "image": "uploads/hero-bridal-premium.jpg",
+        "order": 2,
+        "active": True,
+    },
+]

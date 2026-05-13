@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ "Edit" if product else "Add" }} Product | RajKamal Admin{% endblock %}
+{% block content %}
+<p class="section-kicker">Inventory</p>
+<h1 class="section-title">{{ "Edit" if product else "Add" }} Product</h1>
+<form method="post" enctype="multipart/form-data" class="mt-8 grid gap-5 rounded-lg border border-rajGold/20 bg-white p-6 shadow-sm">
+    <div class="grid gap-5 md:grid-cols-2">
+        <input name="name" required value="{{ product.name if product else '' }}" placeholder="Product name" class="form-input">
+        <input name="slug" value="{{ product.slug if product else '' }}" placeholder="SEO slug (optional)" class="form-input">
+        <input name="price" type="number" step="0.01" required value="{{ product.price if product else '' }}" placeholder="Price" class="form-input">
+        <select name="category" class="form-input">
+            {% for category in categories %}
+                <option value="{{ category.name }}" {% if product and product.category == category.name %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <input name="weight" value="{{ product.weight if product else '' }}" placeholder="Weight e.g. 31.8g" class="form-input">
+        <input name="making_charges" value="{{ product.making_charges if product else '' }}" placeholder="Making charges e.g. 12%" class="form-input">
+        <input name="purity" value="{{ product.purity if product else '' }}" placeholder="Gold purity e.g. 22K" class="form-input">
+        <input name="stones" value="{{ product.stones if product else '' }}" placeholder="Stones" class="form-input">
+        <input name="stock" type="number" value="{{ product.stock if product else 0 }}" placeholder="Stock" class="form-input">
+        <label class="flex items-center gap-3 rounded-full border border-rajGold/30 px-5 py-3"><input type="checkbox" name="trending" {% if product and product.trending %}checked{% endif %}> Trending product</label>
+    </div>
+    <textarea name="description" rows="5" placeholder="Description" class="form-input rounded-2xl">{{ product.description if product else '' }}</textarea>
+    <input name="images" type="file" multiple accept="image/*" class="form-input">
+    {% if product and product.images %}
+        <div class="grid grid-cols-3 gap-3 md:grid-cols-6">
+            {% for image in product.images %}
+                <img src="{{ image if image.startswith('http') else url_for('static', filename=image) }}" alt="Existing product image" class="aspect-square rounded-md object-cover">
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="flex gap-3">
+        <button class="rounded-full bg-rajMaroon px-7 py-3 font-semibold text-white">Save Product</button>
+        <a href="{{ url_for('admin.products') }}" class="rounded-full border border-rajGold px-7 py-3 font-semibold">Cancel</a>
+    </div>
+</form>
+{% endblock %}
