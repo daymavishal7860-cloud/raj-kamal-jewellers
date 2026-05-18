@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 from flask import current_app
+from urllib.parse import urlparse
 
 
 class Mongo:
@@ -10,7 +11,7 @@ class Mongo:
 
     def init_app(self, app):
         self.client = MongoClient(app.config["MONGO_URI"], serverSelectionTimeoutMS=2500)
-        db_name = app.config["MONGO_URI"].rstrip("/").split("/")[-1] or "rajkamal_jewellers"
+        db_name = urlparse(app.config["MONGO_URI"]).path.strip("/") or "rajkamal_jewellers"
         self.db = self.client[db_name]
         app.config["UPLOAD_FOLDER"].mkdir(parents=True, exist_ok=True)
 
