@@ -6,14 +6,27 @@
     <title>{% block title %}Admin | RajKamal Jewellers{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { theme: { extend: { colors: { rajGold: "#D4AF37", rajMaroon: "#5A0F18", rajCream: "#FFF8EA" }, fontFamily: { display: ["Georgia", "serif"] } } } }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { rajGold: "#D4AF37", rajMaroon: "#5C1A1B", rajWine: "#2A0709", rajCream: "#FFF8EA" },
+                    fontFamily: { display: ["Cormorant Garamond", "Georgia", "serif"], body: ["Poppins", "ui-sans-serif", "system-ui"] }
+                }
+            }
+        }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body class="bg-rajCream text-[#211411]">
+<body class="bg-rajCream font-body text-[#211411]">
     <div class="min-h-screen md:flex">
-        <aside class="bg-rajMaroon p-5 text-white md:min-h-screen md:w-72">
-            <a href="{{ url_for('admin.dashboard') }}" class="font-display text-2xl font-bold text-rajGold">RajKamal Admin</a>
+        <aside class="bg-gradient-to-b from-rajMaroon to-rajWine p-5 text-white md:min-h-screen md:w-72">
+            <a href="{{ url_for('admin.dashboard') }}" class="flex items-center gap-3">
+                <span class="rj-mark" aria-hidden="true">RJ</span>
+                <span class="font-display text-2xl font-bold text-rajGold">Admin</span>
+            </a>
             <nav class="mt-8 grid gap-2 text-sm font-semibold">
                 <a class="admin-link" href="{{ url_for('admin.dashboard') }}">Dashboard</a>
                 <a class="admin-link" href="{{ url_for('admin.products') }}">Products</a>

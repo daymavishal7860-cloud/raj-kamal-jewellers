@@ -1,31 +1,74 @@
 {% extends "base.html" %}
 {% block title %}Bridal Collection | RajKamal Jewellers{% endblock %}
 {% block content %}
-<section class="relative min-h-[82vh] overflow-hidden bg-rajMaroon pt-24 text-white">
-    <video class="absolute inset-0 h-full w-full object-cover opacity-35" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1800&q=80"></video>
-    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1800&q=80" alt="Bridal jewellery" class="absolute inset-0 h-full w-full object-cover opacity-45">
-    <div class="absolute inset-0 bg-gradient-to-t from-rajMaroon via-rajMaroon/40 to-transparent"></div>
-    <div class="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl items-end px-4 pb-16 lg:px-8">
-        <div class="max-w-3xl">
+{% set bridal_hero = "https://images.pexels.com/photos/12217206/pexels-photo-12217206.jpeg?auto=compress&cs=tinysrgb&w=2200" %}
+{% set bridal_necklace = "https://images.pexels.com/photos/8706570/pexels-photo-8706570.jpeg?auto=compress&cs=tinysrgb&w=1800" %}
+{% set bridal_bangles = "https://images.pexels.com/photos/12579906/pexels-photo-12579906.jpeg?auto=compress&cs=tinysrgb&w=1800" %}
+<section class="hero-cinematic relative min-h-screen overflow-hidden bg-rajWine pt-24 text-white">
+    <img src="{{ bridal_hero }}" alt="Premium bridal gold necklace collection" class="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-90 saturate-[1.05] contrast-[1.05]">
+    <div class="absolute inset-0 z-[1] heritage-pattern opacity-15"></div>
+    <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-end px-4 pb-24 lg:px-8">
+        <div class="cinema-copy max-w-5xl" data-reveal>
             <p class="section-kicker text-rajGold">Bridal Collections</p>
-            <h1 class="font-display text-5xl font-bold md:text-7xl">Made for the aisle, remembered for generations.</h1>
-            <p class="mt-5 max-w-2xl text-white/75">Explore statement harams, chokers, bangles, maang tikka sets, and custom bridal styling.</p>
+            <h1 class="mt-5 font-display text-6xl font-bold leading-[.84] md:text-8xl lg:text-9xl">Bridal jewellery crafted for generations.</h1>
+            <div class="gold-divider mt-7 max-w-lg"></div>
+            <p class="mt-7 max-w-2xl text-lg leading-9 text-white/78">Explore bridal necklaces, harams, bangles, earrings, rings, temple jewellery, and heirloom-inspired gold pieces.</p>
         </div>
     </div>
 </section>
-<section class="mx-auto max-w-7xl px-4 py-16 lg:px-8">
-    <div class="flex gap-5 overflow-x-auto pb-4">
-        {% for product in products %}
-            <div class="min-w-[290px] max-w-[290px]">
-                {% include "components/product_card.html" %}
+
+<section class="px-4 py-24 lg:px-8 lg:py-32">
+    <div class="mx-auto max-w-7xl">
+        <div class="grid gap-5 md:grid-cols-5">
+            {% for title, text in [("Bridal Gold","Layered necklaces, harams, bangles, and earrings."),("Temple Jewellery","Antique motifs with sacred Indian craft language."),("Wedding Collection","Pieces for pheras, family rituals, and gifting."),("Reception Jewellery","Refined sparkle for evening portraits."),("Diamond Bridal","Elegant brilliance for engagement and reception looks.")] %}
+                <div class="stat-panel luxury-panel" data-reveal>
+                    <h2 class="font-display text-3xl font-bold leading-none text-rajMaroon">{{ title }}</h2>
+                    <p class="mt-3 text-sm leading-6 text-rajInk/64">{{ text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-20 grid gap-10 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+            <div class="campaign-frame relative min-h-[34rem] overflow-hidden rounded bg-rajWine">
+                <img loading="lazy" src="{{ bridal_necklace }}" alt="Close-up of premium bridal gold necklace" class="absolute inset-0 h-full w-full object-cover object-[55%_center] saturate-[1.08]">
+                <div class="absolute inset-0 bg-gradient-to-t from-rajWine via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 p-7 text-white">
+                    <p class="section-kicker text-rajGold">Bridal Gold</p>
+                    <h2 class="mt-3 max-w-xl font-display text-5xl font-bold leading-none">Necklaces, bangles, rings, and temple designs for the wedding collection.</h2>
+                </div>
             </div>
-        {% endfor %}
+            <div>
+                <p class="section-kicker">RajKamal Bridal Collection</p>
+                <h2 class="section-title">Gold jewellery for every wedding ceremony</h2>
+                <p class="mt-6 text-lg leading-9 text-rajInk/70">We sell premium bridal jewellery pieces for engagement, haldi, pheras, reception, and family gifting, with clear purity details and trusted product guidance.</p>
+            </div>
+        </div>
+
+        <div class="mt-20 flex items-end justify-between gap-4">
+            <div>
+                <p class="section-kicker">Bridal Jewellery Pieces</p>
+                <h2 class="section-title">Necklaces, bangles, rings, and harams</h2>
+            </div>
+            <a href="{{ url_for('public.products') }}" class="hidden font-bold text-rajMaroon md:block">Explore all</a>
+        </div>
+        <div class="premium-scroll mobile-luxury-strip mt-10 flex gap-5 overflow-x-auto pb-5">
+            {% for product in products %}
+                <div class="w-[82vw] min-w-[82vw] sm:w-[360px] sm:min-w-[360px]">
+                    {% include "components/product_card.html" %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="relative mt-16 overflow-hidden rounded border border-rajGold/30 bg-rajWine p-6 text-white shadow-luxury md:p-8">
+            <img loading="lazy" src="{{ bridal_bangles }}" alt="Premium gold bridal bangles" class="absolute inset-0 h-full w-full object-cover opacity-18">
+            <div class="absolute inset-0 bg-rajWine/82"></div>
+            <div class="relative max-w-3xl">
+                <p class="section-kicker text-rajGold">Bridal Collection Enquiry</p>
+                <h2 class="mt-2 font-display text-4xl font-bold">Ask us about bridal jewellery availability.</h2>
+                <p class="mt-4 leading-8 text-white/72">For bridal necklaces, bangles, rings, harams, temple jewellery, and wedding collection enquiries, contact RajKamal Jewellers directly.</p>
+                <a href="https://wa.me/918956715719?text=Namaste%20RajKamal%20Jewellers%2C%20I%20want%20to%20enquire%20about%20bridal%20jewellery." class="btn-gold mt-6">WhatsApp Jewellery Enquiry</a>
+            </div>
+        </div>
     </div>
-    <form method="post" action="{{ url_for('public.book_appointment') }}" class="mt-12 grid gap-4 rounded-lg border border-rajGold/20 bg-white p-6 shadow-luxury md:grid-cols-4">
-        <input name="name" required placeholder="Name" class="form-input">
-        <input name="phone" required placeholder="Phone" class="form-input">
-        <input name="date" type="date" required class="form-input">
-        <button class="rounded-full bg-rajMaroon px-6 py-3 font-semibold text-white">Book Bridal Visit</button>
-    </form>
 </section>
 {% endblock %}

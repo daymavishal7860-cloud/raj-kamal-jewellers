@@ -61,7 +61,9 @@ def product_detail(slug):
     session["recently_viewed"] = [slug] + viewed[:5]
 
     related = [p for p in products_data if p.get("category") == product.get("category") and p.get("slug") != slug][:4]
-    return render_template("public/product_detail.html", product=product, related=related)
+    recent_slugs = [item for item in session.get("recently_viewed", []) if item != slug]
+    recent_products = [p for p in products_data if p.get("slug") in recent_slugs][:4]
+    return render_template("public/product_detail.html", product=product, related=related, recent_products=recent_products)
 
 
 @public_bp.route("/bridal")

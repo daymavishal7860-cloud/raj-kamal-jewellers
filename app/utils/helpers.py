@@ -18,7 +18,7 @@ def slugify(value):
 
 def money(value):
     try:
-        return "₹{:,.0f}".format(float(value))
+        return "Rs. {:,.0f}".format(float(value))
     except (TypeError, ValueError):
         return value
 

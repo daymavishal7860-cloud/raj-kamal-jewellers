@@ -1,24 +1,24 @@
-{% set primary = product.images[0] if product.images else 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=900&q=80' %}
-<article class="group overflow-hidden rounded-lg border border-rajGold/20 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-luxury">
-    <a href="{{ url_for('public.product_detail', slug=product.slug) }}" class="block overflow-hidden">
-        <img loading="lazy" src="{{ primary if primary.startswith('http') else url_for('static', filename=primary) }}" alt="{{ product.name }}" class="h-72 w-full object-cover transition duration-700 group-hover:scale-110">
+{% set primary = product.images[0] if product.images else 'https://images.pexels.com/photos/12217206/pexels-photo-12217206.jpeg?auto=compress&cs=tinysrgb&w=1200' %}
+<article class="product-card group">
+    <a href="{{ url_for('public.product_detail', slug=product.slug) }}" class="product-media" aria-label="View {{ product.name }}">
+        <img loading="lazy" src="{{ primary if primary.startswith('http') else url_for('static', filename=primary) }}" alt="{{ product.name }} - {{ product.category }} at RajKamal Jewellers" class="h-full w-full object-cover saturate-[1.05] contrast-[1.03] transition duration-700 group-hover:scale-110">
+        <span class="absolute left-3 top-3 z-10 rounded-full bg-rajWine/82 px-3 py-1 text-[10px] font-semibold uppercase tracking-[.18em] text-rajGold backdrop-blur">{{ product.purity }}</span>
+        <form method="post" action="{{ url_for('public.toggle_wishlist', slug=product.slug) }}" class="absolute right-3 top-3">
+            <button class="relative z-10 grid h-10 w-10 place-items-center rounded-full border border-white/45 bg-white/14 text-sm font-bold text-white backdrop-blur transition hover:border-rajGold hover:bg-rajGold hover:text-rajMaroon" title="Add to wishlist" aria-label="Add {{ product.name }} to wishlist">W</button>
+        </form>
+        <span class="absolute bottom-4 left-4 z-10 text-[10px] font-semibold uppercase tracking-[.22em] text-white/78">RajKamal Edit</span>
     </a>
-    <div class="p-5">
-        <div class="flex items-start justify-between gap-3">
-            <div>
-                <p class="text-xs uppercase tracking-[.24em] text-rajMaroon/70">{{ product.category }}</p>
-                <h3 class="mt-2 font-display text-xl font-bold">{{ product.name }}</h3>
-            </div>
-            <form method="post" action="{{ url_for('public.toggle_wishlist', slug=product.slug) }}">
-                <button class="grid h-10 w-10 place-items-center rounded-full border border-rajGold/40 text-rajMaroon transition hover:bg-rajGold/20" title="Wishlist">♡</button>
-            </form>
+    <div class="p-5 md:p-6">
+        <p class="text-[11px] font-semibold uppercase tracking-[.24em] text-rajMaroon/70">{{ product.category }}</p>
+        <h3 class="mt-2 min-h-[3.1rem] font-display text-2xl font-bold leading-none text-rajWine">{{ product.name }}</h3>
+        <div class="mt-4 flex items-end justify-between gap-4">
+            <p class="text-xl font-bold text-rajMaroon">{{ product.price|money }}</p>
+            <p class="text-xs text-rajInk/55">{{ product.weight }}</p>
         </div>
-        <div class="mt-4 grid grid-cols-2 gap-3 text-sm text-rajInk/70">
-            <span>{{ product.price|money }}</span>
-            <span>{{ product.weight }}</span>
-            <span>{{ product.purity }}</span>
-            <span>Making {{ product.making_charges }}</span>
+        <div class="mt-4 grid grid-cols-2 gap-2 text-xs text-rajInk/60">
+            <span class="mini-spec">{{ product.purity }}</span>
+            <span class="mini-spec">Making {{ product.making_charges }}</span>
         </div>
-        <a href="{{ url_for('public.product_detail', slug=product.slug) }}" class="mt-5 inline-flex w-full items-center justify-center rounded-full bg-rajMaroon px-5 py-3 text-sm font-semibold text-white transition hover:bg-rajGold hover:text-rajMaroon">View Details</a>
+        <a href="{{ url_for('public.product_detail', slug=product.slug) }}" class="mt-5 inline-flex w-full items-center justify-center rounded-full bg-rajMaroon px-5 py-3 text-sm font-semibold text-white transition hover:bg-rajGold hover:text-rajMaroon">View Jewellery Details</a>
     </div>
 </article>

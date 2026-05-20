@@ -1,24 +1,30 @@
 {% extends "base.html" %}
-{% block title %}About | RajKamal Jewellers{% endblock %}
+{% block title %}Legacy | RajKamal Jewellers{% endblock %}
 {% block content %}
-<section class="pt-28">
-    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-2 lg:px-8">
-        <div>
-            <p class="section-kicker">Our Story</p>
-            <h1 class="font-display text-5xl font-bold text-rajMaroon">Crafting moments since 1978 in Jalna.</h1>
-            <p class="mt-6 leading-8 text-rajInk/70">RajKamal Jewellers carries a family craft and enduring legacy by Late Shri Bhagwanji Dayma. Our showroom is known for quality, hallmarked jewellery and exquisite designs that become part of family celebrations.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80" alt="Jewellery craftsmanship" class="h-[32rem] w-full rounded-lg object-cover shadow-luxury">
+<section class="relative overflow-hidden bg-rajWine pt-32 text-white">
+    <img src="https://images.pexels.com/photos/12217206/pexels-photo-12217206.jpeg?auto=compress&cs=tinysrgb&w=2200" alt="Jewellery craftsmanship and heritage" class="absolute inset-0 h-full w-full object-cover object-[54%_center] opacity-46 saturate-[1.06]">
+    <div class="absolute inset-0 maroon-veil"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-24 lg:px-8">
+        <p class="section-kicker text-rajGold">Our Story</p>
+        <h1 class="mt-4 max-w-4xl font-display text-6xl font-bold leading-[.88] md:text-8xl">Crafting moments since 1978 in Jalna.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-9 text-white/74">RajKamal Jewellers carries a family craft and enduring legacy by Late Shri Bhagwanji Dayma.</p>
     </div>
-    <div class="bg-white py-16">
-        <div class="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-3 lg:px-8">
-            {% for title, text in [("Legacy", "Trusted designs for engagements, weddings, and family milestones."), ("Craftsmanship", "Detailed finishing, quality checks, and careful stone setting."), ("Trust", "Clear pricing, purity details, and patient in-store guidance.")] %}
-                <div class="fade-card rounded-lg border border-rajGold/20 bg-rajCream p-8 shadow-sm">
-                    <h2 class="font-display text-3xl font-bold text-rajMaroon">{{ title }}</h2>
-                    <p class="mt-4 leading-7 text-rajInk/70">{{ text }}</p>
-                </div>
-            {% endfor %}
-        </div>
+</section>
+<section class="mx-auto grid max-w-7xl gap-10 px-4 py-24 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+    <div>
+        <p class="section-kicker">Heritage</p>
+        <h2 class="section-title">Jewellery that becomes part of family memory</h2>
+    </div>
+    <p class="text-lg leading-9 text-rajInk/70">Our showroom is known for quality, hallmarked jewellery and exquisite designs that become part of engagements, weddings, festivals, and family celebrations. The experience is personal: clear guidance, careful finishing, and designs rooted in Indian tradition.</p>
+</section>
+<section class="bg-white py-20">
+    <div class="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-3 lg:px-8">
+        {% for title, text in [("Legacy", "Trusted designs for engagements, weddings, and family milestones."), ("Craftsmanship", "Detailed finishing, quality checks, and careful stone setting."), ("Trust", "Clear pricing, purity details, and patient in-store guidance.")] %}
+            <div class="stat-panel luxury-panel" data-reveal>
+                <h2 class="font-display text-3xl font-bold text-rajMaroon">{{ title }}</h2>
+                <p class="mt-4 leading-7 text-rajInk/70">{{ text }}</p>
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
